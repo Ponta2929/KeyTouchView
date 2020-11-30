@@ -234,7 +234,6 @@ namespace ImageLayout
                 }
                 else
                 {
-
                     setting.Width = find.Width;
                     setting.Height = find.Height;
                 }
