@@ -84,6 +84,12 @@ namespace ImageLayout
         public void LoadFile(string path)
         {
             file = $"{path}\\{LayoutName}.xml";
+
+            if (!Directory.Exists($"{path}\\{LayoutName}.Skins"))
+            {
+                Directory.CreateDirectory($"{path}\\{LayoutName}.Skins");
+            }
+
             var files = Directory.GetFiles($"{path}\\{LayoutName}.Skins", "*.xml", SearchOption.AllDirectories);
 
             try

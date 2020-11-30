@@ -77,51 +77,58 @@ namespace KeyTouchView
 
                 plugins.Load($"{Path.GetDirectoryName(Environment.GetCommandLineArgs()[0])}\\plugins");
 
-                foreach (var item in plugins.Plugin)
+                try
                 {
-                    // メニュー項目作成
-                    var menuItem = new ToolStripMenuItem();
+                    foreach (var item in plugins.Plugin)
                     {
-                        menuItem.Text = item.LayoutName;
-                        menuItem.Name = item.LayoutName;
-                        menuItem.Tag = item;
-                        menuItem.Click += ToolStripMenuItem_Layout_Click;
-                    }
-
-                    item.SizeChanged += LayoutSizeChanged;
-
-                    if (item is IPluginSetting)
-                    {
-                        var menuSubItem = new ToolStripMenuItem();
+                        // メニュー項目作成
+                        var menuItem = new ToolStripMenuItem();
                         {
-                            menuSubItem.Text = "設定";
-                            menuSubItem.Tag = menuItem;
-                            menuSubItem.Click += ToolStripMenuItem_Layout_Setting_Click;
+                            menuItem.Text = item.LayoutName;
+                            menuItem.Name = item.LayoutName;
+                            menuItem.Tag = item;
+                            menuItem.Click += ToolStripMenuItem_Layout_Click;
                         }
 
-                        // 設定読み込み
-                        ((IPluginSetting)item).LoadFile($"{Application.StartupPath}\\plugins");
+                        item.SizeChanged += LayoutSizeChanged;
 
-                        menuItem.DropDownItems.Add(menuSubItem);
+                        if (item is IPluginSetting)
+                        {
+                            var menuSubItem = new ToolStripMenuItem();
+                            {
+                                menuSubItem.Text = "設定";
+                                menuSubItem.Tag = menuItem;
+                                menuSubItem.Click += ToolStripMenuItem_Layout_Setting_Click;
+                            }
+
+                            // 設定読み込み
+                            ((IPluginSetting)item).LoadFile($"{Application.StartupPath}\\plugins");
+
+                            menuItem.DropDownItems.Add(menuSubItem);
+                        }
+
+                        item.Initialize();
+
+                        // 追加
+                        ToolStripMenuItem_Layout.DropDownItems.Add(menuItem);
                     }
 
-                    item.Initialize();
-
-                    // 追加
-                    ToolStripMenuItem_Layout.DropDownItems.Add(menuItem);
-                }
-
-                foreach (var item in ToolStripMenuItem_Layout.DropDownItems)
-                {
-                    var menuItem = (ToolStripMenuItem)item;
-
-                    // レイアウト適応
-                    if (menuItem.Name == setting.LayoutName)
+                    foreach (var item in ToolStripMenuItem_Layout.DropDownItems)
                     {
-                        menuItem.PerformClick();
+                        var menuItem = (ToolStripMenuItem)item;
 
-                        break;
+                        // レイアウト適応
+                        if (menuItem.Name == setting.LayoutName)
+                        {
+                            menuItem.PerformClick();
+
+                            break;
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, $"プラグイン読み込み時にエラーが発生しました。\n\r{ex.Message}", "読み込みエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
