@@ -489,7 +489,7 @@ namespace DefaultLayout
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "SettingForm";
-            this.Text = "設定";
+            this.Text = "設定 [DefaultLayout]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingForm_FormClosing);
             this.TabControl_Main.ResumeLayout(false);
             this.TabPage_KeySetting.ResumeLayout(false);

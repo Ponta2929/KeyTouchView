@@ -431,7 +431,7 @@ namespace StackLayout
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "SettingForm";
-            this.Text = "設定";
+            this.Text = "設定 [StackLayout]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingForm_FormClosing);
             this.TabControl_Main.ResumeLayout(false);
             this.TabPage_Replace.ResumeLayout(false);
