@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlacementLayout", "Placemen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageLayout", "ImageLayout\ImageLayout.csproj", "{21D68F25-9698-4273-AE77-F35EC6CFD307}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageLayout.Utility", "..\SkinEditor\ImageLayout.Utility\ImageLayout.Utility.csproj", "{3E4C0C04-CB92-4C55-A70E-C488F1B96901}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageLayout.Utility", "ImageLayout.Utility\ImageLayout.Utility.csproj", "{3E4C0C04-CB92-4C55-A70E-C488F1B96901}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
